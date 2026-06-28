@@ -39,6 +39,8 @@ export const NfpmConfigSchema = z.object({
         rpm: z.string().optional(),
         apk: z.string().optional(),
     })),
+    asset_map: z.record(z.string(), z.string()).optional(),
+    name: z.string().optional(),
 });
 export const ChocolateyConfigSchema = z.object({
     nuspec_template: z.string(),

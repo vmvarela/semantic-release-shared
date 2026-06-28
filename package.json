@@ -1,6 +1,6 @@
 {
   "name": "@vmvarela/semantic-release-shared",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shared utilities for @vmvarela semantic-release plugins",
   "type": "module",
   "main": "dist/index.js",

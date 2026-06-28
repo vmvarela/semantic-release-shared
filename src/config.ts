@@ -57,6 +57,8 @@ export const NfpmConfigSchema = z.object({
       apk: z.string().optional(),
     }),
   ),
+  asset_map: z.record(z.string(), z.string()).optional(),
+  name: z.string().optional(),
 });
 export type NfpmConfig = z.infer<typeof NfpmConfigSchema>;
 

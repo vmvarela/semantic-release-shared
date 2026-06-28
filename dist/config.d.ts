@@ -161,6 +161,8 @@ export declare const NfpmConfigSchema: z.ZodObject<{
         rpm?: string | undefined;
         apk?: string | undefined;
     }>>;
+    asset_map: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+    name: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     config: string;
     formats: ("deb" | "rpm" | "apk")[];
@@ -169,6 +171,8 @@ export declare const NfpmConfigSchema: z.ZodObject<{
         rpm?: string | undefined;
         apk?: string | undefined;
     }>;
+    name?: string | undefined;
+    asset_map?: Record<string, string> | undefined;
 }, {
     config: string;
     formats: ("deb" | "rpm" | "apk")[];
@@ -177,6 +181,8 @@ export declare const NfpmConfigSchema: z.ZodObject<{
         rpm?: string | undefined;
         apk?: string | undefined;
     }>;
+    name?: string | undefined;
+    asset_map?: Record<string, string> | undefined;
 }>;
 export type NfpmConfig = z.infer<typeof NfpmConfigSchema>;
 export declare const ChocolateyConfigSchema: z.ZodObject<{
