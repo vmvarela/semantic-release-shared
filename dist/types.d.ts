@@ -23,7 +23,7 @@ export interface PluginContext {
 export interface Artifact {
     path: string;
     name: string;
-    type: 'binary' | 'man' | 'license' | 'package';
+    type: 'binary' | 'man' | 'license' | 'package' | 'checksum';
     target?: string;
 }
 /** Returned by prepare() to pass data to subsequent steps. */

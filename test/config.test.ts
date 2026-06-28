@@ -35,10 +35,8 @@ describe('BuildZigConfigSchema', () => {
       targets: [{ target: 'x86_64-linux-musl', asset: 'my-cli' }],
       zig_version: '0.16.0',
       bundle_sqlite: true,
-      version_from: 'build.zig.zon',
     });
     expect(result.bundle_sqlite).toBe(true);
-    expect(result.version_from).toBe('build.zig.zon');
   });
 });
 

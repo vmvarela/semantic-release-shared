@@ -23,7 +23,6 @@ export const BuildZigConfigSchema = z.object({
   targets: z.array(TargetSchema).min(1),
   zig_version: z.string(),
   bundle_sqlite: z.boolean().optional(),
-  version_from: z.enum(['build.zig.zon', 'git-tag']).optional(),
 });
 export type BuildZigConfig = z.infer<typeof BuildZigConfigSchema>;
 
@@ -31,7 +30,6 @@ export const BuildGoConfigSchema = z.object({
   targets: z.array(GoTargetSchema).min(1),
   go_version: z.string(),
   ldflags: z.string().optional(),
-  version_from: z.enum(['go.mod', 'git-tag']).optional(),
 });
 export type BuildGoConfig = z.infer<typeof BuildGoConfigSchema>;
 
@@ -39,7 +37,6 @@ export const BuildBunConfigSchema = z.object({
   targets: z.array(TargetSchema).min(1),
   bun_version: z.string(),
   entry: z.string(),
-  version_from: z.enum(['package.json', 'git-tag']).optional(),
 });
 export type BuildBunConfig = z.infer<typeof BuildBunConfigSchema>;
 
@@ -95,6 +92,7 @@ export type ScoopConfig = z.infer<typeof ScoopConfigSchema>;
 export const NixConfigSchema = z.object({
   repo: z.string(),
   assets: z.array(z.string()).min(1),
+  platform_map: z.record(z.string(), z.string()).optional(),
 });
 export type NixConfig = z.infer<typeof NixConfigSchema>;
 
@@ -102,6 +100,9 @@ export const WingetConfigSchema = z.object({
   identifier: z.string(),
 });
 export type WingetConfig = z.infer<typeof WingetConfigSchema>;
+
+export const ChecksumsConfigSchema = z.object({});
+export type ChecksumsConfig = z.infer<typeof ChecksumsConfigSchema>;
 
 export const DispatchConfigSchema = z.object({
   repo: z.string(),
