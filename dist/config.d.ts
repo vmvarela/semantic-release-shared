@@ -46,7 +46,6 @@ export declare const BuildZigConfigSchema: z.ZodObject<{
     }>, "many">;
     zig_version: z.ZodString;
     bundle_sqlite: z.ZodOptional<z.ZodBoolean>;
-    version_from: z.ZodOptional<z.ZodEnum<["build.zig.zon", "git-tag"]>>;
 }, "strip", z.ZodTypeAny, {
     targets: {
         target: string;
@@ -55,7 +54,6 @@ export declare const BuildZigConfigSchema: z.ZodObject<{
     }[];
     zig_version: string;
     bundle_sqlite?: boolean | undefined;
-    version_from?: "build.zig.zon" | "git-tag" | undefined;
 }, {
     targets: {
         target: string;
@@ -64,7 +62,6 @@ export declare const BuildZigConfigSchema: z.ZodObject<{
     }[];
     zig_version: string;
     bundle_sqlite?: boolean | undefined;
-    version_from?: "build.zig.zon" | "git-tag" | undefined;
 }>;
 export type BuildZigConfig = z.infer<typeof BuildZigConfigSchema>;
 export declare const BuildGoConfigSchema: z.ZodObject<{
@@ -86,7 +83,6 @@ export declare const BuildGoConfigSchema: z.ZodObject<{
     }>, "many">;
     go_version: z.ZodString;
     ldflags: z.ZodOptional<z.ZodString>;
-    version_from: z.ZodOptional<z.ZodEnum<["go.mod", "git-tag"]>>;
 }, "strip", z.ZodTypeAny, {
     targets: {
         asset: string;
@@ -95,7 +91,6 @@ export declare const BuildGoConfigSchema: z.ZodObject<{
         ext?: string | undefined;
     }[];
     go_version: string;
-    version_from?: "git-tag" | "go.mod" | undefined;
     ldflags?: string | undefined;
 }, {
     targets: {
@@ -105,7 +100,6 @@ export declare const BuildGoConfigSchema: z.ZodObject<{
         ext?: string | undefined;
     }[];
     go_version: string;
-    version_from?: "git-tag" | "go.mod" | undefined;
     ldflags?: string | undefined;
 }>;
 export type BuildGoConfig = z.infer<typeof BuildGoConfigSchema>;
@@ -125,7 +119,6 @@ export declare const BuildBunConfigSchema: z.ZodObject<{
     }>, "many">;
     bun_version: z.ZodString;
     entry: z.ZodString;
-    version_from: z.ZodOptional<z.ZodEnum<["package.json", "git-tag"]>>;
 }, "strip", z.ZodTypeAny, {
     targets: {
         target: string;
@@ -134,7 +127,6 @@ export declare const BuildBunConfigSchema: z.ZodObject<{
     }[];
     bun_version: string;
     entry: string;
-    version_from?: "git-tag" | "package.json" | undefined;
 }, {
     targets: {
         target: string;
@@ -143,7 +135,6 @@ export declare const BuildBunConfigSchema: z.ZodObject<{
     }[];
     bun_version: string;
     entry: string;
-    version_from?: "git-tag" | "package.json" | undefined;
 }>;
 export type BuildBunConfig = z.infer<typeof BuildBunConfigSchema>;
 export declare const ManPageConfigSchema: z.ZodObject<{
@@ -244,12 +235,15 @@ export type ScoopConfig = z.infer<typeof ScoopConfigSchema>;
 export declare const NixConfigSchema: z.ZodObject<{
     repo: z.ZodString;
     assets: z.ZodArray<z.ZodString, "many">;
+    platform_map: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
 }, "strip", z.ZodTypeAny, {
     assets: string[];
     repo: string;
+    platform_map?: Record<string, string> | undefined;
 }, {
     assets: string[];
     repo: string;
+    platform_map?: Record<string, string> | undefined;
 }>;
 export type NixConfig = z.infer<typeof NixConfigSchema>;
 export declare const WingetConfigSchema: z.ZodObject<{
@@ -260,6 +254,8 @@ export declare const WingetConfigSchema: z.ZodObject<{
     identifier: string;
 }>;
 export type WingetConfig = z.infer<typeof WingetConfigSchema>;
+export declare const ChecksumsConfigSchema: z.ZodObject<{}, "strip", z.ZodTypeAny, {}, {}>;
+export type ChecksumsConfig = z.infer<typeof ChecksumsConfigSchema>;
 export declare const DispatchConfigSchema: z.ZodObject<{
     repo: z.ZodString;
     event_type: z.ZodString;
